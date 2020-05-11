@@ -1,0 +1,2 @@
+include ':app', ':buildkts'
+rootProject.name='BaseMvvm'
