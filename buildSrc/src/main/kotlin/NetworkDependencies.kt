@@ -1,8 +1,10 @@
+import Versions.NetworkVersions.MOSHI_VER
+import Versions.NetworkVersions.OKHTTP3_VER
+import Versions.NetworkVersions.KOTSHI_VER
+import Versions.NetworkVersions.RETROFIT2_VER
+import org.gradle.kotlin.dsl.DependencyHandlerScope
+
 object NetworkDependencies {
-    private const val MOSHI_VER = "1.6.0"
-    private const val OKHTTP3_VER = "3.12.0"
-    private const val KOTSHI_VER = "1.0.2"
-    private const val RETROFIT2_VER = "2.5.0"
 
     const val MOSHI = "com.squareup.moshi:moshi:$MOSHI_VER"
     const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:$MOSHI_VER"
@@ -20,6 +22,27 @@ object NetworkDependencies {
     const val RETROFIT2_CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:$RETROFIT2_VER"
     const val RETROFIT2_MOCK = "com.squareup.retrofit2:retrofit-mock:$RETROFIT2_VER"
 
-    const val AMAZON_AWS_ANDROID_SDK_S3 = "com.amazonaws:aws-android-sdk-s3:2.12.7"
-    const val AMAZON_AWS_ANDROID_KINESIS = "com.amazonaws:aws-android-sdk-kinesis:2.16.0"
+    fun DependencyHandlerScope.retrofit2() {
+        "implementation"(RETROFIT2)
+        "implementation"(RETROFIT2_ADAPTER_RXJAVA2)
+        "implementation"(RETROFIT2_CONVERTER_MOSHI)
+        "implementation"(RETROFIT2_CONVERTER_GSON)
+        "testImplementation"(RETROFIT2_MOCK)
+    }
+
+    fun DependencyHandlerScope.moshi() {
+        "implementation"(MOSHI)
+        "implementation"(MOSHI_KOTLIN)
+    }
+
+    fun DependencyHandlerScope.kotshi() {
+        "implementation"(KOTSHI)
+        "kapt"(KOTSHI_COMPILER)
+    }
+
+    fun DependencyHandlerScope.okhttp3() {
+        "implementation"(OKHTTP3)
+        "implementation"(OKHTTP3_LOGGING_INTERCEPTOR)
+        "testImplementation"(OKHTTP3_MOCK_WEB_SERVER)
+    }
 }
