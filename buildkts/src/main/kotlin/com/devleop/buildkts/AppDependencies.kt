@@ -1,16 +1,18 @@
 package com.devleop.buildkts
 
 
-object Apps{
-    const val compileSdk = 29
-    const val minSdk = 21
-    const val target = 29
-    const val versionCode = 1
-    const val versionName = "1.0.0"
+object Apps {
+    const val COMPILE_SDK = 29
+    const val MIN_SDK = 21
+    const val TARGET_SDK = 29
+    const val VERSION_CODE = 1
+    const val VERSION_NAME = "1.0.0"
+
+    const val APPLICATION_ID = "com.develop.dongle"
 }
 
-object Versions{
-    const val gradle = "3.5.2"
-    const val kotlin = "1.3.50"
-    const val appCommpat = "1.0.2"
+object Versions {
+    const val GRADLE = "3.5.2"
+    const val KOTLIN = "1.3.50"
+    const val APPCOMMPAT = "1.0.2"
 }
