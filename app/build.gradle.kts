@@ -8,7 +8,6 @@ import NetworkDependencies.okhttp3
 import NetworkDependencies.retrofit2
 import RxDependencies.rxJava
 
-
 androidApplicationConfig(Apps.APPLICATION_ID)
 
 dependencies {

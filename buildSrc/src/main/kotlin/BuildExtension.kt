@@ -73,6 +73,8 @@ fun Project.androidLibraryConfig(defaultConfigExtensions: (DefaultConfig.() -> U
             sourceCompatibility = JavaVersion.VERSION_1_8
             targetCompatibility = JavaVersion.VERSION_1_8
         }
+
+        dataBinding { isEnabled = true }
     }
 }
 
