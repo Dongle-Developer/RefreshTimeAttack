@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BaseDataBindingRecyclerView<ITEM> :
+abstract class BaseDataBindingAdapter<ITEM> :
     RecyclerView.Adapter<BaseDataBindingViewHolder<ITEM>>(), LifecycleObserver {
 
     private val items = mutableListOf<ITEM>()
@@ -45,7 +45,6 @@ abstract class BaseDataBindingRecyclerView<ITEM> :
         @LayoutRes layout: Int,
         view: View
     ): BaseDataBindingViewHolder<ITEM>
-
 
     override fun onCreateViewHolder(parent: ViewGroup, layout: Int) =
         getViewHolder(layout, inflateView(parent, layout))

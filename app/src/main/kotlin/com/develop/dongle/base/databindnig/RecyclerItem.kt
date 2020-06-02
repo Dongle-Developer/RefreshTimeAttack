@@ -1,0 +1,51 @@
+package com.develop.dongle.base.databindnig
+
+import androidx.annotation.LayoutRes
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.DiffUtil
+
+data class RecyclerItem(
+    val data: Any,
+    @LayoutRes val layoutId: Int,
+    val variableId: Int
+)
+
+internal fun RecyclerItem.bind(binding: ViewDataBinding) {
+    binding.setVariable(variableId, data)
+}
+
+interface RecyclerItemComparator {
+    fun isSameItem(other: Any): Boolean
+    fun isSameContent(other: Any): Boolean
+}
+
+internal class DiffCallback : DiffUtil.ItemCallback<RecyclerItem>() {
+
+    override fun areItemsTheSame(
+        oldItem: RecyclerItem,
+        newItem: RecyclerItem
+    ): Boolean {
+        val oldData = oldItem.data
+        val newData = newItem.data
+        // Use appropriate comparator's method if both items implement the interface
+        // and rely on the plain 'equals' otherwise
+        return if (oldData is RecyclerItemComparator
+            && newData is RecyclerItemComparator
+        ) {
+            oldData.isSameItem(newData)
+        } else oldData == newData
+    }
+
+    override fun areContentsTheSame(
+        oldItem: RecyclerItem,
+        newItem: RecyclerItem
+    ): Boolean {
+        val oldData = oldItem.data
+        val newData = newItem.data
+        return if (oldData is RecyclerItemComparator
+            && newData is RecyclerItemComparator
+        ) {
+            oldData.isSameContent(newData)
+        } else oldData == newData
+    }
+}
